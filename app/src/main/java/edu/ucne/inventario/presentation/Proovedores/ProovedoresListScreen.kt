@@ -43,7 +43,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import edu.ucne.inventario.data.local.entities.ProovedorEntity
 import edu.ucne.inventario.data.remote.dto.ProovedorDto
+import edu.ucne.inventario.presentation.proveedores.ProovedoresViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -127,7 +129,7 @@ fun ProovedoresListBodyScreen(
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                items(uiState.proovedores){ proovedor ->
+                items(uiState.proveedores){ proovedor ->
                     ProovedorRow(proovedor = proovedor, onEdit = onEdit, onDelete = onDelete)
                 }
             }
@@ -136,7 +138,7 @@ fun ProovedoresListBodyScreen(
 }
 @Composable
 fun ProovedorRow(
-    proovedor: ProovedorDto,
+    proovedor: ProovedorEntity,
     onDelete: (Int) -> Unit,
     onEdit: (Int) -> Unit
 ){
