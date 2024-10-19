@@ -10,6 +10,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import edu.ucne.inventario.data.di.AppModule.BASE_URL
+import edu.ucne.inventario.data.local.database.InventarioDb
 import edu.ucne.inventario.data.remote.interfaces.CategoriaApi
 import edu.ucne.inventario.data.remote.interfaces.ProductoApi
 import edu.ucne.inventario.data.remote.interfaces.ProovedorApi
@@ -21,6 +22,31 @@ import javax.inject.Singleton
 @Module
 object AppModule {
     const val BASE_URL = "https://inventarioapi-f3c6fvgsh0f2aueq.eastus2-01.azurewebsites.net"
+
+
+    @Provides
+    @Singleton
+    fun provideInventarioDb(@ApplicationContext appContext: Context) =
+        Room.databaseBuilder(
+            appContext,
+            InventarioDb::class.java,
+            "Inventario.db"
+        ).fallbackToDestructiveMigration()
+            .build()
+
+    @Provides
+    @Singleton
+    fun provideCategoriaDao(inventarioDb: InventarioDb) = inventarioDb.categoriaDao
+
+    @Provides
+    @Singleton
+    fun provideProductoDao(inventarioDb: InventarioDb) = inventarioDb.productoDao
+
+    @Provides
+    @Singleton
+    fun provideProovedorDao(inventarioDb: InventarioDb) = inventarioDb.proovedorDao
+
+
 
     @Singleton
     @Provides
