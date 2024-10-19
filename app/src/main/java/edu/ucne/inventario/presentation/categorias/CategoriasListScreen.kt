@@ -42,6 +42,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import edu.ucne.inventario.data.local.entities.CategoriaEntity
 import edu.ucne.inventario.data.remote.dto.CategoriaDto
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -134,7 +135,7 @@ fun CategoriasListBodyScreen(
 
 @Composable
 fun CategoriaRow(
-    categoria: CategoriaDto,
+    categoria: CategoriaEntity,
     onDelete: (Int) -> Unit,
     onEdit: (Int) -> Unit
 ) {
