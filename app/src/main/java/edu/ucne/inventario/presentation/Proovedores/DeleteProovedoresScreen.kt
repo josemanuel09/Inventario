@@ -25,7 +25,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import edu.ucne.inventario.presentation.Proovedores.ProovedoresViewModel
 
 @Composable
 fun DeleteProovedorScreen(
@@ -34,7 +33,7 @@ fun DeleteProovedorScreen(
     goBack: () -> Unit
 ) {
     LaunchedEffect(proovedorId) {
-        viewModel.SelectProovedor(proovedorId)
+        viewModel.selectProveedor(proovedorId)
     }
     val uiState by viewModel.uiState.collectAsStateWithLifecycle()
 
@@ -122,7 +121,7 @@ fun DeleteProovedorBodyScreen(
 
                     Button(
                         onClick = {
-                            onDelete(uiState.proovedorId!!)
+                            onDelete(uiState.proveedorId!!)
                         },
                         modifier = Modifier
                             .fillMaxWidth()
