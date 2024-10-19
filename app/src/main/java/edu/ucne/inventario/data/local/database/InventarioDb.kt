@@ -15,7 +15,7 @@ import edu.ucne.inventario.data.local.entities.ProovedorEntity
         CategoriaEntity::class,
         ProovedorEntity::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 
 )
